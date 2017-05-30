@@ -13,11 +13,16 @@ class Github extends Component {
     this.setState({ username})
   } 
 
+  handleSubmit = (ev) => {
+    ev.preventDeafult()
+    this.props.history.push(`/github/${this.state.username}`)
+  }
+
   render() {
     return(
       <div className="github">
         <img className="github-logo" src="" alt="github" />
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div>
             <input 
               type="text" 
