@@ -3,9 +3,17 @@ import './SpotifyArtist.css'
 
 class SpotifyArtist extends Component {
   state = {
-    user: {
-      spotify_uri: '',
-      spotify_id: '',
+    artist: {
+      id: '',
+      images: '',
+      followers: '',
+      genre: '',
+      popularity: '',
+      // spotify_uri: '',
+      // spotify_id: '',
+      // spotify_category_id: '',
+      // spotify_user_id: '',
+      // spotify_url: '',
     }
   }
 
@@ -15,9 +23,9 @@ class SpotifyArtist extends Component {
   }
 
   fetchUserData = (props) => {
-    fetch(`https://api.spotify.com/albums/${props.match.params.username}`)
+    fetch(`https://api.spotify.com/v1/artists/${props.match.params.artist}`)
       .then(response => response.json())
-      .then(user => this.setState({ user }))
+      .then(artist => this.setState({ artist }))
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,15 +36,14 @@ class SpotifyArtist extends Component {
   }
 
   render() {
-    const { user } = this.state
+    const { artist } = this.state
     return (
-      <div className="spotify-user">
-        <img src={user.avatar_url} alt="user"/>
-        <h2>{user.login}</h2>
-        <h3>followers: {user.followers}</h3>
-        <h3>following: {user.following}</h3>
-        <h3>location: {user.location}</h3>
-        <a href={user.html_url} target="_">Link to {user.login}'s profile</a>
+      <div className="spotify-artist">
+        <img src={artist.images} alt="artist"/>
+        <h3>followers: {artist.followers}</h3>
+        <h3>genre: {artist.genres}</h3>
+        <h3>popularity: {artist.popularity}</h3>
+        <a href={artist.href} target="_">Link to {artist.login}'s profile</a>
       </div>
     )
   }

@@ -5,17 +5,17 @@ import SpotifyArtist from './SpotifyArtist'
 
 class Spotify extends Component {
   state = {
-    artist: ''
+    artistName: ''
   }
 
   handleChange = (ev) => {
-    const artist = ev.currentTarget.value
-    this.setState({ artist })
+    const artistName = ev.currentTarget.value
+    this.setState({ artistName })
   }
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    this.props.history.push(`/spotify/${this.state.artist}`)
+    this.props.history.push(`/spotify/${this.state.artistName}`)
   }
 
   render() {
@@ -26,15 +26,15 @@ class Spotify extends Component {
           <div>
             <input 
               type="text"
-              value={this.state.artist}
+              value={this.state.artistName}
               onChange={this.handleChange} />
           </div>
           <div>
-            <button type="submit">Look up artist</button>
+            <button type="submit">Look up artist name</button>
           </div>
         </form>
 
-        <Route path='/github/:artist' component={SpotifyArtist} />
+        <Route path='/spotify/:artist' component={SpotifyArtist} />
         <Route exact path='/spotify' render={() => (
           <h3>Please enter an artist to search on spotify</h3>
         )} />
