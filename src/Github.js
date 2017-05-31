@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import "./Github.css"
+import React, { Component } from 'react'
+import './Github.css'
 import { Route } from 'react-router-dom'
 import GithubUser from './GithubUser'
-
 
 class Github extends Component {
   state = {
@@ -11,35 +10,34 @@ class Github extends Component {
 
   handleChange = (ev) => {
     const username = ev.currentTarget.value
-    this.setState({ username})
-  } 
+    this.setState({ username })
+  }
 
   handleSubmit = (ev) => {
-    ev.preventDeafult()
+    ev.preventDefault()
     this.props.history.push(`/github/${this.state.username}`)
   }
 
   render() {
-    return(
+    return (
       <div className="github">
-        <img className="github-logo" src="" alt="github" />
+        <img className="github-logo" src="http://www.aha.io/assets/github.7433692cabbfa132f34adb034e7909fa.png" alt="github" />
         <form onSubmit={this.handleSubmit}>
           <div>
             <input 
-              type="text" 
+              type="text"
               value={this.state.username}
-              onChange={this.handleChange}
-            />
+              onChange={this.handleChange} />
           </div>
           <div>
             <button type="submit">Look up github user</button>
           </div>
         </form>
 
-        <Route exact path='/github' render={() => (
-          <h3>Please enter a username to search on github</h3>
-        )} />
         <Route path='/github/:username' component={GithubUser} />
+        <Route exact path='/github' render={() => (
+          <h3>Please enter a username to search on Github</h3>
+        )} />
       </div>
     )
   }
