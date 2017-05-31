@@ -21,7 +21,7 @@ class Spotify extends Component {
   render() {
     return (
       <div className="spotify">
-        <img className="spotify-logo" src="https://hakkaprod-comp-logos.s3.amazonaws.com/uploads/company/square_logo/58/medium_Square_Logo.jpg" alt="spotify" />
+        <img className="spotify-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrsNFeX_IqZsOzKU8N8NDHNal2J6IYXht8Dpqx_W_cgOUODdW" alt="spotify" />
         <form onSubmit={this.handleSubmit}>
           <div>
             <input 
